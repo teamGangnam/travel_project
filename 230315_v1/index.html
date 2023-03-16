@@ -132,34 +132,35 @@
       <!-- 배경 오퍼시티 -->
       <div class="backOpacity"></div>
       <div class="sectionInner">
-        <!-- left버튼 -->
-        <div class="pre" onclick="prevSlide()">
-          <button class="innerPre">&lt;</button>
-        </div>
-
-        <!-- 슬라이드 -->
-        <div id="imgContainer">
-          <div class="imgBox">
-            <div class="img img1">
-              <img src="./img/seoul1.png" alt="#">
+        
+        <div class="slideG slideG1">
+          <!-- left버튼 -->
+          <div class="pre" onclick="prevSlide()">
+            <button class="innerPre">&lt;</button>
+          </div>
+          <!-- 슬라이드 -->
+          <div id="imgContainer">
+            <div class="imgBox">
+              <div class="img img1">
+                <img src="./img/seoul1.png" alt="#">
+              </div>
+              <div class="img img1">
+                <img src="./img/seoul2.png" alt="#">
+              </div>
+              <div class="img img1">
+                <img src="./img/seoul3.png" alt="#">
+              </div>
             </div>
-            <div class="img img1">
-              <img src="./img/seoul2.png" alt="#">
-            </div>
-            <div class="img img1">
-              <img src="./img/seoul3.png" alt="#">
+            <div class="imgButton">
+              <button class="btn" value="0" onclick="btnClick(event)"></button>
+              <button class="btn" value="1" onclick="btnClick(event)"></button>
+              <button class="btn" value="2" onclick="btnClick(event)"></button>
             </div>
           </div>
-          <div class="imgButton">
-            <button class="btn" value="0" onclick="btnClick(event)"></button>
-            <button class="btn" value="1" onclick="btnClick(event)"></button>
-            <button class="btn" value="2" onclick="btnClick(event)"></button>
+          <!-- right버튼 -->
+          <div class="next" onclick="nextSlide()">
+            <button class="innerNext">&gt;</button>
           </div>
-        </div>
-
-        <!-- right버튼 -->
-        <div class="next" onclick="nextSlide()">
-          <button class="innerNext">&gt;</button>
         </div>
 
         <!-- 타이틀 -->

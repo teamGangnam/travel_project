@@ -76,7 +76,7 @@ html {
   top: 100%;
   left: 2rem;
   display: none;
-  transition: all 0.5s;
+  
   background-color: rgba(240, 248, 255, 0.2);
   font-weight: 100;
 }
@@ -325,17 +325,22 @@ html {
   position: absolute;
   display: flex;
   align-items: center;
-  width: 1400px;
-  height: 600px;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-#container .section .sectionInner .pre {
+#container .section .sectionInner .slideG {
   position: relative;
-  left: 4rem;
-  z-index: 1;
+}
+
+#container .section .sectionInner .pre {
+  display: inline-block;
+  top: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 3rem;
+  z-index: 9;
 }
 
 .innerPre {
@@ -351,8 +356,11 @@ html {
 }
 
 #container .section .sectionInner .next {
-  position: relative;
-  right: 4rem;
+  display: inline-block;
+  top: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  right: 1.5rem;
 }
 
 .innerNext {
@@ -368,6 +376,7 @@ html {
 }
 
 #container .section .sectionInner .title {
+  width: 500px;
   margin-left: 2em;
   text-align: center;
   font-size: 40px;
@@ -392,6 +401,7 @@ html {
 }
 
 #imgContainer {
+  display: inline-block;
   position: relative;
   width: 500px;
   height: 650px;
@@ -403,7 +413,7 @@ html {
 #imgContainer .imgBox {
   width: 100%;
   display: flex;
-  transition: all 0.5s;
+  position: absolute;
 }
 
 #imgContainer .imgBox .img img {
@@ -431,7 +441,7 @@ html {
 #imgContainer .imgBox2 {
   width: 100%;
   display: flex;
-  transition: all 0.5s;
+  
 }
 
 #imgContainer .imgBox2 .img {
@@ -441,7 +451,7 @@ html {
 #imgContainer .imgBox3 {
   width: 100%;
   display: flex;
-  transition: all 0.5s;
+  
 }
 
 #imgContainer .imgBox3 .img {
@@ -451,7 +461,7 @@ html {
 #imgContainer .imgBox4 {
   width: 100%;
   display: flex;
-  transition: all 0.5s;
+  
 }
 
 #imgContainer .imgBox4 .img {
@@ -461,7 +471,7 @@ html {
 #imgContainer .imgBox5 {
   width: 100%;
   display: flex;
-  transition: all 0.5s;
+  
 }
 
 #imgContainer .imgBox5 .img {

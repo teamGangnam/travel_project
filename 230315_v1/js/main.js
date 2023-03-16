@@ -1,69 +1,96 @@
 
-let imgBox = document.getElementsByClassName('imgBox')
+let imgBox = document.querySelector('.imgBox')
+let imgBoxAll = document.querySelectorAll('.imgBox')
 const imgWrap = document.querySelectorAll('.img1')
+let cloneFirst = imgWrap[0].cloneNode(true); // 요소 복사
+let cloneLast = imgWrap[imgWrap.length - 1].cloneNode(true);
+imgBox.insertBefore(cloneLast, imgWrap[0]);
+imgBox.appendChild(cloneFirst);
+
 let btn = document.querySelector('.section1 .btn') // 버튼 클릭 함수 실행을 위한 변수
 let btnAll = document.querySelectorAll('.section1 .btn') // 버튼 클릭 함수 실행을 위한 변수
-
 let count = 0;
-// let imgSize = document.querySelector('.section').clientWidth
 
+document.querySelector('.imgBox').style.left = '-500px'
 
 function imgSlideShow() {
-    if (count < imgWrap.length - 1) {
+    imgBox.style.transition = `all .7s`;
+    if (count < imgWrap.length-1) {
         count++
-        document.querySelector('.imgBox').style.transform = `translate(${count * -500}px)`
+        imgBox.style.transform = `translate(${count * -500}px)`
         // 슬라이드 움직임에 맞춰 버튼 색상 변하게 하기
         btnAll.forEach((i) => i.style.background = 'rgb(255, 255, 255, .5)')
         btnAll[count].style.background = 'rgb(255, 255, 255, 1)'
     }
-    else if (count === imgWrap.length - 1) {
-        document.querySelector('.imgBox').style.transform = `translate(0)`
+    else if (count == imgWrap.length-1) {
+        imgBox.style.transform = `translate(${(count+1) * -500}px)`
         // 슬라이드 움직임에 맞춰 버튼 색상 변하게 하기
         btnAll.forEach((i) => i.style.background = 'rgb(255, 255, 255, .5)')
         btnAll[0].style.background = 'rgb(255, 255, 255, 1)'
-
-        return count = 0;
+        setTimeout(()=>{
+            imgBox.style.transition = `0s`;
+            imgBox.style.transform = `translateX(0px)`;
+        },700)
+        count = 0;
     }
-
 }
 
 
 // 첫번째 버튼 색상 
 btnAll[0].style.background = 'rgb(255, 255, 255, 1)'
-
 // 버튼 클릭시 슬라이드 함수
 function btnClick(event) {
+    imgBox.style.transition = `all .7s`;
     //클릭한 버튼의 값을 가져옴
     let btnValue = event.target.value
-    count = btnValue
     // 클릭하는 버튼 색상 변화
     btnAll.forEach((i) => i.style.background = 'rgb(255, 255, 255, .5)')
     btnAll[btnValue].style.background = 'rgb(255, 255, 255, 1)'
-
     document.querySelector('.imgBox').style.transform = `translate(${btnValue * -500}px)`
-    return;
-
+    count = btnValue
+    if(btnValue == 0) {
+        return count = 0
+    }
 }
 
 function prevSlide() {
+    imgBox.style.transition = `all .7s`;
     if (count > 0) {
         count--
         document.querySelector('.imgBox').style.transform = `translate(${count * -500}px)`
         btnAll.forEach((i) => i.style.background = 'rgb(255, 255, 255, .5)')
         btnAll[count].style.background = 'rgb(255, 255, 255, 1)'
-    } else if (count === imgWrap.length - 1) {
-        return count = 0;
+    } else if (count === 0) {
+        console.log('asd')
+        imgBox.style.transform = `translate(500px)`
+        // 슬라이드 움직임에 맞춰 버튼 색상 변하게 하기
+        btnAll.forEach((i) => i.style.background = 'rgb(255, 255, 255, .5)')
+        btnAll[imgWrap.length - 1].style.background = 'rgb(255, 255, 255, 1)'
+        setTimeout(()=>{
+            imgBox.style.transition = `0s`;
+            imgBox.style.transform = `translateX(${(imgWrap.length-1)*-500}px)`;
+        },700)
+        return count = imgWrap.length-1;
     }
 }
 
 function nextSlide() {
+    imgBox.style.transition = `all .7s`;
     if (count < imgWrap.length - 1) {
         count++
         document.querySelector('.imgBox').style.transform = `translate(${count * -500}px)`
         btnAll.forEach((i) => i.style.background = 'rgb(255, 255, 255, .5)')
         btnAll[count].style.background = 'rgb(255, 255, 255, 1)'
-    } else if (count === imgWrap.length) {
-        return count = -1;
+    } else if (count === imgWrap.length-1) {
+        imgBox.style.transform = `translate(${(count+1) * -500}px)`
+        // 슬라이드 움직임에 맞춰 버튼 색상 변하게 하기
+        btnAll.forEach((i) => i.style.background = 'rgb(255, 255, 255, .5)')
+        btnAll[0].style.background = 'rgb(255, 255, 255, 1)'
+        setTimeout(()=>{
+            imgBox.style.transition = `0s`;
+            imgBox.style.transform = `translateX(0px)`;
+        },700)
+        return count = 0;
     }
 }
 
@@ -360,24 +387,24 @@ function nextSlide5() {
 // ---------------------------------- 로그인 페이지 세팅
 function show() {
 
-        document.querySelector('.loginPage').style.display = "block"
-   
+    document.querySelector('.loginPage').style.display = "block"
+
 
     return;
 
 }
 
 function shows() {
-        document.querySelector('.loginPage').style.display = "none";
-        document.querySelector('.loginPage2').style.display = "block";
+    document.querySelector('.loginPage').style.display = "none";
+    document.querySelector('.loginPage2').style.display = "block";
 
     return;
 }
 
 function reshow() {
 
-        document.querySelector('.loginPage2').style.display = "none";
-        document.querySelector('.loginPage').style.display = "block";
+    document.querySelector('.loginPage2').style.display = "none";
+    document.querySelector('.loginPage').style.display = "block";
 
     return;
 
@@ -418,10 +445,11 @@ mainBtn.forEach(i => {
         forSlide = num
         mHtml.animate({ scrollTop: ((num - 1) * target_top) });
         mainBtn.forEach((i) => i.style.background = 'rgb(255, 255, 255, .5)')
-        mainBtn[forSlide-1].style.background = 'rgb(255, 255, 255, 1)'
+        mainBtn[forSlide - 1].style.background = 'rgb(255, 255, 255, 1)'
     })
 })
 mainBtn[0].style.background = 'rgb(255, 255, 255, 1)'
+    for(let i in imgBoxAll)
 
 
 // 스크롤이벤트
@@ -455,17 +483,17 @@ $(window).on("wheel", function (e) {
 
 //=========================================== 마우스 호버 이벤트
 
-let imgContainer = document.querySelector('.imgBox') //마우스 호버시 슬라이드 멈추기 위한 변수
+let imgContainer = document.querySelector('.slideG1') //마우스 호버시 슬라이드 멈추기 위한 변수
 
 // 호버시 슬라이드 막기
 
-let slideControl = setInterval(imgSlideShow, 1500)
+let slideControl = setInterval(imgSlideShow, 3000)
 
 imgContainer.addEventListener('mouseover', () => {
     clearInterval(slideControl)
 })
 imgContainer.addEventListener('mouseout', () => {
-    return slideControl = setInterval(imgSlideShow, 1500)
+    return slideControl = setInterval(imgSlideShow, 3000)
 })
 
 
@@ -476,13 +504,13 @@ let imgContainer2 = document.querySelector('.imgBox2') //마우스 호버시 슬
 
 // 호버시 슬라이드 막기
 
-let slideControl2 = setInterval(imgSlideShow2, 1500)
+let slideControl2 = setInterval(imgSlideShow2, 3000)
 
 imgContainer2.addEventListener('mouseover', () => {
     clearInterval(slideControl2)
 })
 imgContainer2.addEventListener('mouseout', () => {
-    return slideControl2 = setInterval(imgSlideShow2, 1500)
+    return slideControl2 = setInterval(imgSlideShow2, 3000)
 })
 
 
@@ -492,13 +520,13 @@ let imgContainer3 = document.querySelector('.imgBox3') //마우스 호버시 슬
 
 // 호버시 슬라이드 막기
 
-let slideControl3 = setInterval(imgSlideShow3, 1500)
+let slideControl3 = setInterval(imgSlideShow3, 3000)
 
 imgContainer3.addEventListener('mouseover', () => {
     clearInterval(slideControl3)
 })
 imgContainer3.addEventListener('mouseout', () => {
-    return slideControl3 = setInterval(imgSlideShow3, 1500)
+    return slideControl3 = setInterval(imgSlideShow3, 3000)
 })
 
 
@@ -509,13 +537,13 @@ let imgContainer4 = document.querySelector('.imgBox4') //마우스 호버시 슬
 
 // 호버시 슬라이드 막기
 
-let slideControl4 = setInterval(imgSlideShow4, 1500)
+let slideControl4 = setInterval(imgSlideShow4, 3000)
 
 imgContainer4.addEventListener('mouseover', () => {
     clearInterval(slideControl4)
 })
 imgContainer4.addEventListener('mouseout', () => {
-    return slideControl4 = setInterval(imgSlideShow4, 1500)
+    return slideControl4 = setInterval(imgSlideShow4, 3000)
 })
 
 
@@ -525,13 +553,13 @@ let imgContainer5 = document.querySelector('.imgBox5') //마우스 호버시 슬
 
 // 호버시 슬라이드 막기
 
-let slideControl5 = setInterval(imgSlideShow5, 1500)
+let slideControl5 = setInterval(imgSlideShow5, 3000)
 
 imgContainer5.addEventListener('mouseover', () => {
     clearInterval(slideControl5)
 })
 imgContainer5.addEventListener('mouseout', () => {
-    return slideControl5 = setInterval(imgSlideShow5, 1500)
+    return slideControl5 = setInterval(imgSlideShow5, 3000)
 })
 
 
