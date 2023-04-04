@@ -1,49 +1,84 @@
-* {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    box-sizing: border-box;
+.overlaybox {
+  position: relative;
+  padding: 10px 10px;
 }
 
-a {
-    color: inherit;
-}
-                                      
-#imgContainer {
-    width: 500px;
-    height: 500px;
-    margin : 5em auto;
-    overflow: hidden;
-    position: relative;
-    border-radius: 15px;
+.overlaybox div,
+ul {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-#imgContainer .imgBox {
-     width: 100%;
-    display: flex;
-    transition : all 0.5s
+.overlaybox li {
+  list-style: none;
+  width: 230px;
 }
 
-#imgContainer .imgBox .img img{
-    border-radius: 10px;
+#map > div > div > div > div:last-child {
+  border-radius: 20px;
+  width: 250px !important;
+  height: 100%;
+  border: 0px solid rgb(118, 129, 168) !important;
 }
 
-#imgContainer .imgButton {
-
-    position:absolute;
-    bottom: 0;
-    left: 50%;
-    transform : translateX(-50%);
-
+.overlaybox .first {
+  position: relative;
+  width: 230px;
+  height: 125px;
+  border-radius: 15px;
+  background: url("../img/markerBg.jpg") no-repeat;
+  background-size: cover;
+  margin-bottom: 8px;
 }
 
-#imgContainer .imgButton .btn {
-    margin : 0 0.1em;
-    background-color: rgb(255, 255, 255);
-    width: 15px;
-    height: 15px;
-    border-radius: 50px;
-    border: none;
-    box-shadow: 3px 0.5px 20px rgb(172, 172, 172);
+.first .text {
+  color: #fff;
+  font-weight: bold;
 }
 
+.first .movietitle {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 7px 15px;
+  font-size: 14px;
+}
+
+.overlaybox ul {
+  width: 247px;
+}
+
+.overlaybox li {
+  position: relative;
+  margin-bottom: 2px;
+  padding: 5px 10px;
+  line-height: 1;
+  text-align: center;
+}
+
+.overlaybox li span {
+  display: inline-block;
+}
+
+.overlaybox li .number {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.overlaybox li .title {
+  font-size: 13px;
+}
+
+.overlaybox li:hover {
+  color: white;
+  background: #737373;
+}
+
+select {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
